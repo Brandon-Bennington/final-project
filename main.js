@@ -1,69 +1,61 @@
 // Create deck of cards
-let values = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine','J', 'Q', 'K', 'A'];
+let values = ['Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'J', 'Q', 'K', 'A'];
 let suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
+let deck = [];
 
-// create and shuffle deck
-function createDeck() {
-    for (let i = 0; i < suits.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            let card = {Suit: suits[i], Value: values[j]};
-                deck.push(card);
-            }
-        }
-        shuffleDeck();
+console.log(deck)
+
+//Create cards
+for (let i = 0; i < values.length; i++) {
+  for (let j = 0; j < suits.length; j++) {
+    let card = { Value: values[i], Suit: suits[j] };
+    deck.push(card);
+  }
 }
+console.log(deck)
 
-// Create the player's hand
-let playerHand = [];
-let playerScore = 0;
 
-// Create the dealer's hand
-let dealerHand = [];
-let dealerScore = 0;
+let shuffleDeck = deck.sort(() => Math.random() - 0.5);
+//The number -0.5 is used to sort the array randomly by giving it a random number between -0.5 and 0.5. This ensures that the array is shuffled in a completely random order.
 
-let deck = cardValue + suits
+let playerCards = [shuffleDeck.pop()];
+let dealerCards = [shuffleDeck.pop()];
 
-// Create a hit function that takes a hand as a parameter and draws a card
-function hit(hand) {
-    let card = deck[Math.floor(Math.random() * deck.length)];
-    hand.push(card);
-    return hand;
-}
 
 // deal cards to player and dealer
 function dealCards() {
-    playerHand.push(deck.shift());
-    dealerHand.push(deck.shift());
-    playerHand.push(deck.shift());
-    dealerHand.push(deck.shift());
+    playerCards.push(deck.shift());
+    dealerCards.push(deck.shift());
 }
+dealCards();
+console.log(dealerCards[0].Value)
 
-// Create a function to calculate the total value of a hand
-function calculateHand(hand) {
-    let total = 0;
-    for (let i = 0; i < hand.length; i++) {
-        if (hand[i] === "J" || hand[i] === "Q" || hand[i] === "K") {
-            total += 10;
-        } else if (hand[i] === "A") {
-            if (total +11 > 21){
-                total+= 11;
-                } else {
-                    total += 1;
-                }
-        } else {
-            total += hand[i];
-        }
+// get card numeric value
+function getCardNumericValue(card) {
+    switch(card.Value) {
+        case 'Two': return 2;
+        case 'Three': return 3;
+        case 'Four': return 4;
+        case 'Five': return 5;
+        case 'Six': return 6;
+        case 'Seven': return 7;
+        case 'Eight': return 8;
+        case 'Nine': return 9;
+        case 'Ten': return 10;
+        case 'J': return 10;
+        case 'Q': return 10;
+        case 'K': return 10;
+        case 'A': return 11;
     }
 }
-
 // calculate player's score
 function calculatePlayerScore() {
     let score = 0;
     let hasAce = false;
-        for (let i = 0; i < playerHand.length; i++) {
-            let card = playerHand[i];
+        for (let i = 0; i < playerCards.length; i++) {
+            let card = playerCards[i];
             score += getCardNumericValue(card);
-            if (card.value === "Ace") {
+            if (card.Value === "Ace") {
                 hasAce = true;
             }
         }
@@ -72,6 +64,7 @@ function calculatePlayerScore() {
         }
         return score;
 }
+
 
 // calculate dealer's score
 function calculateDealerScore() {
@@ -80,7 +73,7 @@ function calculateDealerScore() {
         for (let i = 0; i < dealerCards.length; i++) {
             let card = dealerCards[i];
             score += getCardNumericValue(card);
-            if (card.value === "Ace") {
+            if (card.Value === "Ace") {
                 hasAce = true;
             }
         }
@@ -90,32 +83,30 @@ function calculateDealerScore() {
         return score;
 }
 
-// get card numeric value
-function getCardNumericValue(card) {
-        switch (card.Value) {
-            case "Ace":
-                return 1;
-            case "Two":
-                return 2;
-            case "Three":
-                return 3;
-            case "Four":
-                return 4;
-            case "Five":
-                return 5;
-            case "Six":
-                return 6;
-            case "Seven":
-                return 7;
-            case "Eight":
-                return 8;
-            case "Nine":
-                return 9;
-            default:
-                return 10;
-        }
+console.log("Player's cards: ");
+console.log(playerCards);
+console.log(playerCards);
+let playerScore = getCardNumericValue(playerCards[0]) + getCardNumericValue(playerCards[1])
+console.log("Dealer's first card: ");
+console.log(dealerCards[0])
+
+//calculate the score for the player
+console.log(`The player's first two cards are ${playerCards[0].Value} of ${playerCards[0].Suit} and ${playerCards[1].Value} of ${playerCards[1].Suit} and player's score is ${playerScore}`);
+
+
+console.log(`The dealer's first card is a ${dealerCards[0].Value} of ${dealerCards[0].Suit} and dealer's score is ${getCardNumericValue(dealerCards[0])}`);
+
+// Create a hit function that takes a hand as a parameter and draws a card
+function hit(hand) {
+    let card = deck[Math.floor(Math.random() * deck.length)];
+    hand.push(card);
+    return hand;
 }
 
+
+
+
+/*
 // check for blackjack
 function checkForBlackjack() {
     if (playerScore === 21 || dealerScore === 21) {
@@ -196,3 +187,5 @@ function startGame() {
 
 document.querySelector('#deal').addEventListener('click', startGame());
 console.log(startGame())
+
+*/
