@@ -1,18 +1,38 @@
 
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> BlackJack </title>
+    <link href="style.css" rel="stylesheet">
   </head>
+  <h1>Blackjack</h1>
   <body>
-    <h1>BlackJack</h1>
-    <p>Player Score: <span id="playerScore"></span></p>
-    <p>Dealer Score: <span id="dealerScore"></span></p>
-    <p>Player Cards: <span id="playerCards"></span></p>
-    <p>Dealer Cards: <span id="dealerCards"></span></p>
-    <button class="btn-lg btn-primary" id="newGame">Start Game</button>
-    <button onclick="hitButtonPressed()">Hit</button>
-    <button onclick="standButtonPressed()">Stand</button>
+    <!--blackjack table-->
+    <div id="blackjack-table">
+    <!--dealer--> 
+      <h3>Dealer</h3>
+
+        <div class="cards" id="dealer-card1"></div>
+        <div class="cards" id="dealer-card2"></div>
+        <div id="dealer-score"></div>
+    
+    <!--Player-->      
+    <h3>Player</h3>
+          <div class="rectangle"></div>
+          <div class="cards" id="player-card1"></div>
+          <div class="cards" id="player-card2"></div>
+          <div class="cards" id="player-card3"></div>
+          <div id="player-score"></div>
+   
+    <!--butttons-->
+    <div>
+      <button id="hit-button" onclick="hit()">Hit</button>
+      <button id="stand-button" onclick="stand()">Stand</button>
+      <button id="new-game" onclick="newgame()">New Game</button>
+    </div>
  
 </body>
   <script src="main.js"></script>

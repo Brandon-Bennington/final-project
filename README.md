@@ -1,46 +1,17 @@
 # Final Project
+In this project I attempted to create a game of blackjack. 
 
-In this project, you'll build a web application that does anything you want! 
+The game was not completed in time for a variety of outside factors and poor time management. 
 
-It must meet the project requirements below, but beyond that, feel free to use your creativity to decide on what your app will do.
+My initial intentions for the game included more features than I truly understood how to implement and unfortunately by the time I attempted to settle for a simpler project more realistic project I barely had time to do enough to make it run. 
 
-## Requirements
+The original idea was for the game of blackjack to allow for the user to play against the dealer who would play according to pre-determined rules like in a casino. Assets of card images would be used for the cards and there would be an option to play with a single or double deck and choose how often the deck is shuffled. 
 
-* **Your app has at least three distinct "features"**
-  * If you are building a travel planning application, one feature could be allowing users to create a new trip
-* Your project has at least ten commits in git
-* Your app is mobile responsive
-* Your project contains a `README.md` file that explains what your project is and how to use it
-* Your project is hosted on GitHub pages
-* Your code is clean
-  * Proper indentation
-  * No unnecessary repetition
-  * Variables as camelCase
+There are console.log(s) in the js file showing where I was testing and trying to find the issues. 
+There was an effort to keep the code organized. 
+The functions were written separately. 
+I do intend to continue to work on this project into the future. 
 
-## Project ideas
+Blackjack
 
-* Travel planner
-* Budget manager
-* Resume builder
-* Shift scheduling app
-* Chat bot
-* Music making app
-* Games
-  * PacMan
-  * Chess
-* Do something with an external API: https://github.com/public-apis/public-apis
-  * Slack / discord bot
-  * Recreate Reddit
-  * Pokedex
-
-And so many more possibilities!
-
-## Recommendations
-
-* Start out by creating your project's foundation in HTML.
-* Frequently make commmits in git to save your progress.
-* Build one piece of Javascript functionality at a time, testing each change you make with `console.log`. 
-* Keep your code meticulously organized as you go. 
-* Use proper indentation, whitespace, and comments. 
-* Try to write a function for each separate piece of functionality that exists in your code. This will make your code "modular" and easier to build off of.
-* If you find yourself repeating code, think about how you could use either a loop or a new function to eliminate the repitition.
+The objective is to score more than the dealer while remaining under 21. If dealt a 21 to start the game, that individual wins. After being dealt their first two cards the player has the option to stay or hit. The player may hit as many times as they want as long as they do not pass 21. The player can also stay and hope that they dealer will pass 21 and "bust" attempting to outscore them. 
